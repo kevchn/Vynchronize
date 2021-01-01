@@ -21,7 +21,7 @@ var given_room = ""
 app.use(express.static(__dirname + '/'));
 
 server.listen(process.env.PORT || 3000);
-console.log('Server Started . . .');
+console.log('Server started...');
 
 
 // app.param('room', function(req,res, next, room){
@@ -386,7 +386,7 @@ io.sockets.on('connection', function(socket) {
             var currTime = data.time
             var state = data.state
             var videoId = data.videoId
-            var playerId = io.sockets.adapter.rooms['room-' + roomnum].currPlayer
+            var playerId = io.sockets.adapter.rooms['room-' + socket.roomnum].currPlayer
             // var videoId = io.sockets.adapter.rooms['room-'+roomnum].currVideo
             io.sockets.in("room-" + roomnum).emit('syncVideoClient', {
                 time: currTime,
